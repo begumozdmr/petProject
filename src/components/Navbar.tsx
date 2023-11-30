@@ -1,0 +1,96 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { IconBrandFacebookFilled, IconBrandTwitterFilled, IconBrandInstagram, IconMenu2 } from '@tabler/icons-react';
+
+interface NavbarLinksType {
+    id: number,
+    name: string,
+    path: string
+};
+
+const NavbarLinksData: NavbarLinksType[] = [
+    {
+        id: 1,
+        name: "Home",
+        path: "/"
+    },
+    {
+        id: 2,
+        name: "About",
+        path: "/about"
+    },
+    {
+        id: 3,
+        name: "Services",
+        path: "/services"
+    },
+    {
+        id: 4,
+        name: "Contact",
+        path: "/contact"
+    },
+    {
+        id: 5,
+        name: "FAQ",
+        path: "/faq"
+    }
+];
+
+export default function Navbar() {
+
+    const [activeIndex, setActiveIndex] = useState<number>(1);
+
+    const handleLinkClick = (index: number) => {
+        setActiveIndex(index === activeIndex ? 0 : index);
+    };
+
+    return (
+        <header>
+            <nav>
+                <section className='navbar__container'>
+                    <div className='navbar__row'>
+                        <div className='navbar__content'>
+                            <Link to='/' className='navbar__logo' onClick={() => handleLinkClick(1)}>
+                                <img src={require("../img/pet__logo.png")} alt='logo' className='logo'></img>
+                                <h1>UMTAN</h1>
+                            </Link>
+
+                            <ul className='navbar__items'>
+                                {
+                                    NavbarLinksData.map((index: NavbarLinksType) => {
+                                        return (
+                                            <li key={index.id} className={`navbar__item ${index.id === activeIndex ? "active" : ""}`}>
+                                                <Link to={index.path} onClick={() => handleLinkClick(index.id)}>{index.name}</Link>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                            <div className='navbar__logo'>
+                                <div className='social__media__button social__media__button--grey '>
+                                    <Link to="/#">
+                                        <IconBrandFacebookFilled width={"18px"} height={"18px"} />
+                                    </Link>
+                                </div>
+                                <div className='social__media__button social__media__button--pink'>
+                                    <Link to="/#">
+                                        <IconBrandTwitterFilled width={"18px"} height={"18px"} />
+                                    </Link>
+                                </div>
+                                <div className='social__media__button social__media__button--grey'>
+                                    <Link to="/#">
+                                        <IconBrandInstagram />
+                                    </Link>
+                                </div>
+
+                                <div className='social__media__button social__media__button--pink social__media__button--responsive__menu'>
+                                    <IconMenu2 width={"18px"} height={"18px"} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </nav>
+        </header>
+    )
+}
