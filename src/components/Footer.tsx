@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IconBrandFacebookFilled, IconBrandTwitterFilled, IconBrandInstagram, IconPawFilled } from '@tabler/icons-react';
+import { IconBrandFacebookFilled, IconBrandTwitterFilled, IconBrandInstagram } from '@tabler/icons-react';
+import Button from './Button';
 
 export default function Footer() {
     return (
@@ -14,13 +15,10 @@ export default function Footer() {
                                 <h2 className='footer__title'>Subscribe</h2>
                                 <div className='footer__search__container'>
                                     <input type='text' placeholder='Search...'></input>
-                                    <button className='pages__button pages__button--pink'>
-                                        <IconPawFilled />
-                                        Subscribe
-                                    </button>
+                                    <Button className={"pages__button--pink"} name={" Subscribe"} />
                                 </div>
                             </div>
-                            
+
                             <div className='home__page__content'>
                                 <h2 className='footer__title'>Quick Links</h2>
                                 <Link to="/">Home</Link>

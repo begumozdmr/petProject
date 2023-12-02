@@ -42,7 +42,21 @@ export default function Navbar() {
 
     const handleLinkClick = (index: number) => {
         setActiveIndex(index === activeIndex ? 0 : index);
+        localStorage.setItem("path", String(index));
     };
+
+    React.useEffect(() => {
+        const storagePath = Number(localStorage.getItem("path"));
+        const linkItem = document.querySelectorAll(".navbar__item");
+
+        if (!isNaN(storagePath) && storagePath && storagePath < linkItem.length) {
+            linkItem.forEach((index) => {
+                index.classList.remove("active");
+            });
+            console.log(linkItem[storagePath - 1]);
+            linkItem[storagePath - 1].classList.add("active");
+        }
+    }, [activeIndex])
 
     return (
         <header>
@@ -52,7 +66,7 @@ export default function Navbar() {
                         <div className='navbar__content'>
                             <Link to='/' className='navbar__logo' onClick={() => handleLinkClick(1)}>
                                 <img src={require("../img/pet__logo.png")} alt='logo' className='logo'></img>
-                                <h1>UMTAN</h1>
+                                <h1>SANUM</h1>
                             </Link>
 
                             <ul className='navbar__items'>

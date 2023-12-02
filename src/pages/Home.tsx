@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconPawFilled, IconBuildingCommunity, IconPhone } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
+import Button from 'components/Button';
 
 interface DaysType {
     id: number,
@@ -87,10 +88,7 @@ export default function Home() {
                                 <h1 className='home__title'>Love And Treat Your Pets Like Royalty</h1>
                                 <p className='home__comment'>Lorem ipsum dolor sit amet consectetur adipiscing elitellus luctus necullam pulvinar dapibus maecenas maximus viverra malesuada.</p>
                                 <div>
-                                    <button className='pages__button'>
-                                        <IconPawFilled />
-                                        Get Started
-                                    </button>
+                                    <Button className={""} name={"Get Started"} />
                                 </div>
                             </div>
                         </div>
@@ -195,15 +193,8 @@ export default function Home() {
                                 </div>
 
                                 <div className='grid__2 grid__2--gap'>
-                                    <button className='pages__button'>
-                                        <IconPawFilled />
-                                        Get In Touch
-                                    </button>
-
-                                    <button className='pages__button pages__button--transparent' onClick={() => navigate('/contact')}>
-                                        <IconPawFilled />
-                                        Contact Us
-                                    </button>
+                                    <Button className={""} name={"Get In Touch"} />
+                                    <Button className={"pages__button--transparent"} name={"Contact Us"} onClick={() => navigate('/contact')} />
                                 </div>
                             </div>
 
@@ -227,10 +218,7 @@ export default function Home() {
                                     <img src={require("../img/sans.jpg")} alt='sans'></img>
                                     <div className='card__image__title'>
                                         <h1>Donate and support us</h1>
-                                        <button className='pages__button pages__button--white'>
-                                            <IconPawFilled />
-                                            Donate Now
-                                        </button>
+                                        <Button className={"pages__button--white"} name={"Donate Now"} />
                                     </div>
                                 </div>
                             </div>
@@ -312,7 +300,6 @@ export default function Home() {
                                 }
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -324,11 +311,7 @@ export default function Home() {
                             <div className='home__page__content'>
                                 <h1 className='page__title'>Professional Veterinary Care, Reasonable Price And Guaranteed Quality</h1>
                                 <p className='paragraph__explanation paragraph__explanation--white'>Curabitur et lorem et dolor iaculis convallis. Curabitur interdum ipsum convallis porttitor vulputate. Morbi sed massa at dui congue porttitor eget.</p>
-
-                                <div className='pages__button pages__button--pink'>
-                                    <IconPawFilled />
-                                    <p>View More</p>
-                                </div>
+                                <Button className={"pages__button--pink"} name={"View More"} />
                             </div>
                         </div>
                     </div>
