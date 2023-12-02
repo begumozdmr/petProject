@@ -267,6 +267,30 @@ img {
     background: $primary-color;
     height: 110px;
     position: relative;
+    border-bottom: 1px solid $text-colorGrey;
+}
+
+.responsive__navbar__menu {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    max-height: 0px;
+    padding: 10px 0px;
+    background: $primary-color;
+    z-index: 999;
+    transition: all 0.4s ease-in-out;
+    border-top: 1px solid $text-colorGrey;
+
+    &.active {
+        position: absolute;
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+        max-height: 1000px;
+        width: 100%;
+    }
 }
 
 .navbar__row {
@@ -333,7 +357,18 @@ img {
     white-space: nowrap;
     opacity: 1;
     visibility: visible;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.2s ease-in-out;
+
+    &--responsive {
+        flex-direction: column;
+        gap: 25px;
+
+        .navbar__item {
+            a {
+                width: 100%;
+            }
+        }
+    }
 
     .navbar__item {
         display: flex;
@@ -990,11 +1025,11 @@ img {
 
 }
 
-.reference__image{
+.reference__image {
     opacity: .5;
     transition: all 0.4s ease-in-out;
 
-    &:hover{
+    &:hover {
         opacity: 1;
     }
 }
@@ -1011,6 +1046,13 @@ img {
         height: 0;
         display: flex;
         justify-content: center;
+
+        &--responsive {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            width: 100%;
+        }
     }
 
     .social__media__button {
@@ -1076,6 +1118,13 @@ img {
         height: 0;
         display: flex;
         justify-content: center;
+
+        &--responsive {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            width: 100%;
+        }
     }
 
     .social__media__button {
@@ -1122,6 +1171,13 @@ img {
         height: 0;
         display: flex;
         justify-content: center;
+
+        &--responsive {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+            width: 100%;
+        }
     }
 
     .social__media__button {
@@ -1175,6 +1231,12 @@ img {
             opacity: 0;
             visibility: hidden;
         }
+    }
+
+    .responsive__navbar__menu.active {
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
     }
 
     .grid__4 {

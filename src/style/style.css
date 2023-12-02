@@ -205,6 +205,30 @@ img {
   background: #698891;
   height: 110px;
   position: relative;
+  border-bottom: 1px solid #b6b6b6;
+}
+
+.responsive__navbar__menu {
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  max-height: 0px;
+  padding: 10px 0px;
+  background: #698891;
+  z-index: 999;
+  transition: all 0.4s ease-in-out;
+  border-top: 1px solid #b6b6b6;
+}
+
+.responsive__navbar__menu.active {
+  position: absolute;
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+  max-height: 1000px;
+  width: 100%;
 }
 
 .navbar__row {
@@ -271,7 +295,16 @@ img {
   white-space: nowrap;
   opacity: 1;
   visibility: visible;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar__items--responsive {
+  flex-direction: column;
+  gap: 25px;
+}
+
+.navbar__items--responsive .navbar__item a {
+  width: 100%;
 }
 
 .navbar__items .navbar__item {
@@ -884,6 +917,13 @@ img {
     justify-content: center;
   }
 
+  .navbar__items--responsive {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    width: 100%;
+  }
+
   .social__media__button--responsive__menu {
     opacity: 1;
     visibility: visible;
@@ -943,6 +983,13 @@ img {
     justify-content: center;
   }
 
+  .navbar__items--responsive {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    width: 100%;
+  }
+
   .social__media__button--responsive__menu {
     opacity: 1;
     visibility: visible;
@@ -985,6 +1032,13 @@ img {
     height: 0;
     display: flex;
     justify-content: center;
+  }
+
+  .navbar__items--responsive {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    width: 100%;
   }
 
   .social__media__button--responsive__menu {
@@ -1034,6 +1088,12 @@ img {
   .social__media__button--responsive__menu {
     opacity: 0;
     visibility: hidden;
+  }
+
+  .responsive__navbar__menu.active {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
   }
 
   .grid__4 {

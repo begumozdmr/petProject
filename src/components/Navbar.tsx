@@ -39,10 +39,16 @@ const NavbarLinksData: NavbarLinksType[] = [
 export default function Navbar() {
 
     const [activeIndex, setActiveIndex] = useState<number>(1);
+    const [responsiveMenuControl, setResponsiveMenuControl] = useState<boolean>(false);
+
+    const handleClickResponsiveMenu = () => {
+        setResponsiveMenuControl(!responsiveMenuControl);
+    };
 
     const handleLinkClick = (index: number) => {
         setActiveIndex(index === activeIndex ? 0 : index);
         localStorage.setItem("path", String(index));
+        setResponsiveMenuControl(false)
     };
 
     React.useEffect(() => {
@@ -97,9 +103,27 @@ export default function Navbar() {
                                     </Link>
                                 </div>
 
-                                <div className='social__media__button social__media__button--pink social__media__button--responsive__menu'>
+                                <div className='social__media__button social__media__button--pink social__media__button--responsive__menu' onClick={handleClickResponsiveMenu}>
                                     <IconMenu2 width={"18px"} height={"18px"} />
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={`responsive__navbar__menu ${responsiveMenuControl ? "active" : ""}`}>
+                        <div className='page__container'>
+                            <div className='page__row'>
+                                <ul className='navbar__items navbar__items--responsive'>
+                                    {
+                                        NavbarLinksData.map((index: NavbarLinksType) => {
+                                            return (
+                                                <li key={index.id} className={`navbar__item ${index.id === activeIndex ? "active" : ""}`}>
+                                                    <Link to={index.path} onClick={() => handleLinkClick(index.id)}>{index.name}</Link>
+                                                </li>
+                                            )
+                                        })
+                                    }
+                                </ul>
                             </div>
                         </div>
                     </div>
