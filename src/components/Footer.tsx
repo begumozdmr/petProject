@@ -4,6 +4,11 @@ import { IconBrandFacebookFilled, IconBrandTwitterFilled, IconBrandInstagram } f
 import Button from './Button';
 
 export default function Footer() {
+
+    const handleClickScroll = () => {
+        window.scrollTo(0, 0);
+    };
+
     return (
         <footer className="footer__container">
             <div className='page__container'>
@@ -21,11 +26,11 @@ export default function Footer() {
 
                             <div className='home__page__content'>
                                 <h2 className='footer__title'>Quick Links</h2>
-                                <Link to="/">Home</Link>
-                                <Link to="/about">About Us</Link>
-                                <Link to="/services">Services</Link>
-                                <Link to="/contact">Contact</Link>
-                                <Link to="/faq">FAQ</Link>
+                                <Link to="/" onClick={handleClickScroll}>Home</Link>
+                                <Link to="/about" onClick={handleClickScroll}>About Us</Link>
+                                <Link to="/services" onClick={handleClickScroll}>Services</Link>
+                                <Link to="/contact" onClick={handleClickScroll}>Contact</Link>
+                                <Link to="/faq" onClick={handleClickScroll}>FAQ</Link>
                             </div>
 
                             <div className='home__page__content'>

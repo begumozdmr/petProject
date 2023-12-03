@@ -311,6 +311,7 @@ img {
     align-self: stretch;
     align-items: center;
     justify-content: space-between;
+    overflow-x: hidden;
 }
 
 .navbar__logo {
@@ -620,7 +621,7 @@ img {
         @include font-size('text-18');
     }
 
-    &--not__found{
+    &--not__found {
         width: 100%;
         display: flex;
         align-items: center;
@@ -1120,7 +1121,7 @@ img {
 
     .home__page__content {
         h1 {
-            @include font-size('text-40')
+            @include font-size('text-35')
         }
     }
 
