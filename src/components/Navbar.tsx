@@ -33,7 +33,7 @@ const NavbarLinksData: NavbarLinksType[] = [
         id: 5,
         name: "FAQ",
         path: "/faq"
-    }
+    },
 ];
 
 export default function Navbar() {
@@ -59,7 +59,6 @@ export default function Navbar() {
             linkItem.forEach((index) => {
                 index.classList.remove("active");
             });
-            console.log(linkItem[storagePath - 1]);
             linkItem[storagePath - 1].classList.add("active");
         }
     }, [activeIndex])

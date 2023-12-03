@@ -562,6 +562,18 @@ img {
 
         ;
     }
+
+    &--404 {
+        height: 100vh;
+
+        background: {
+            image: url(../img/404.jpg);
+            position: 80% 20%;
+            size: cover
+        }
+
+        ;
+    }
 }
 
 .home__header__content {
@@ -591,6 +603,14 @@ img {
     z-index: 20;
     position: relative;
 
+    .not__found__title {
+        @include font-size('text-180');
+    }
+
+    .not__found__comment {
+        @include font-size('text-40');
+    }
+
     .home__title {
         @include font-size('text-65');
         line-height: 1.2;
@@ -598,6 +618,12 @@ img {
 
     .home__comment {
         @include font-size('text-18');
+    }
+
+    &--not__found{
+        width: 100%;
+        display: flex;
+        align-items: center;
     }
 }
 

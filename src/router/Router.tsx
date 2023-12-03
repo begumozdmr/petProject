@@ -1,10 +1,10 @@
+import NotFound from 'components/NotFound';
 import About from 'pages/About';
 import Contact from 'pages/Contact';
 import Faq from 'pages/Faq';
 import Home from 'pages/Home';
 import Services from 'pages/Services';
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 export default function Router() {
     return (
@@ -14,6 +14,8 @@ export default function Router() {
             <Route path="/contact" element={<Contact />}>Contact</Route>
             <Route path="/faq" element={<Faq />}>FAQ</Route>
             <Route path="/services" element={<Services />}>Services</Route>
+            <Route path="*" element={<Navigate to="/404" replace />} />
+            <Route path="/404" element={<NotFound />}>Not Found</Route>
         </Routes>
     )
 }
