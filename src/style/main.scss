@@ -207,6 +207,7 @@ img {
             justify-content: center;
             align-items: center;
             text-align: center;
+            z-index: 30;
 
             .pages__button.pages__button--transparent {
                 color: $text-colorWhite;

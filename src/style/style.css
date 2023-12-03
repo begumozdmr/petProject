@@ -148,6 +148,7 @@ img {
   justify-content: center;
   align-items: center;
   text-align: center;
+  z-index: 30;
 }
 
 .card .card__image .card__image__title .pages__button.pages__button--transparent {

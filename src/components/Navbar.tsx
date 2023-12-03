@@ -16,7 +16,7 @@ const NavbarLinksData: NavbarLinksType[] = [
     },
     {
         id: 2,
-        name: "About",
+        name: "About Us",
         path: "/about"
     },
     {
