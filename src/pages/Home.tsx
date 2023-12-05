@@ -2,6 +2,7 @@ import React from 'react';
 import { IconPawFilled, IconBuildingCommunity, IconPhone } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'components/Button';
+import gsap, { Power2 } from 'gsap';
 
 interface DaysType {
     id: number,
@@ -78,6 +79,92 @@ const ChooseData: ChooseType[] = [
 export default function Home() {
 
     const navigate = useNavigate();
+
+    React.useEffect(() => {
+        gsap.fromTo(".home__title",
+            {
+                x: -20,
+                opacity: 0
+            },
+            {
+                delay: 0.8,
+                x: 0,
+                opacity: 1,
+                ease: Power2.easeInOut
+            }
+        )
+
+        gsap.fromTo(".home__comment",
+            {
+                x: 100,
+                opacity: 0
+            },
+            {
+                delay: 0.8,
+                x: 0,
+                opacity: 1,
+                ease: Power2.easeInOut
+            }
+        )
+
+        gsap.fromTo(".button",
+            {
+                y: 80,
+                opacity: 0
+            },
+            {
+                delay: 1.6,
+                y: 0,
+                opacity: 1,
+                ease: Power2.easeInOut
+            }
+        )
+
+        gsap.fromTo("#section-1",
+            {
+                x: 500,
+                opacity: 0
+            },
+            {
+                duration: 2,
+                scrollTrigger: {
+                    trigger: "#section-1",
+                    start: "top center",
+                    end: "bottom bottom",
+                    markers: true,
+                    scrub: true,
+                    toggleActions: "play none none none",
+                },
+                x: 0,
+                opacity: 1,
+                ease: Power2.easeInOut
+            }
+        )
+
+        gsap.fromTo("#section-2",
+            {
+                x: -500,
+                opacity: 0
+            },
+            {
+                duration: 2,
+                scrollTrigger: {
+                    trigger: "#section-2",
+                    start: 'center bottom',
+                    end: "center top",
+                    scrub: true,
+                    markers: true,
+                    pinSpacing: false,
+                    toggleActions: "play none none none",
+                },
+                x: 0,
+                opacity: 1,
+                ease: Power2.easeInOut
+            }
+        )
+
+    }, []);
+
     return (
         <>
             <section>
@@ -87,7 +174,7 @@ export default function Home() {
                             <div className='home__title__content'>
                                 <h1 className='home__title'>Love And Treat Your Pets Like Royalty</h1>
                                 <p className='home__comment'>Lorem ipsum dolor sit amet consectetur adipiscing elitellus luctus necullam pulvinar dapibus maecenas maximus viverra malesuada.</p>
-                                <div>
+                                <div className='button'>
                                     <Button className={""} name={"Get Started"} />
                                 </div>
                             </div>
@@ -96,7 +183,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='page__container'>
+            <section className='page__container' id='section-1'>
                 <div className='page__row'>
                     <div className='page__gap'>
                         <div className='grid__4'>
@@ -167,7 +254,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='page__container'>
+            <section className='page__container' id='section-2'>
                 <div className='page__row'>
                     <div className='page__gap'>
                         <div className='grid__2'>
@@ -209,7 +296,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='page__container'>
+            <section className='page__container' id='section-1'>
                 <div className='page__row'>
                     <div className='page__gap'>
                         <div className='grid__4 grid__4--contiguous'>
@@ -260,7 +347,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='page__container'>
+            <section className='page__container' id='section-2'>
                 <div className='page__row'>
                     <div className='page__gap'>
                         <div className='grid__2'>

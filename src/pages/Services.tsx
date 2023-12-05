@@ -1,13 +1,15 @@
+import React from 'react';
 import Button from 'components/Button';
 import Header from 'components/Header';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Navigation } from 'swiper/modules';
+import gsap, { Power2 } from 'gsap';
 
 interface ReferencesType {
   id: number,
   path: string
-}
+};
 
 const ReferencesData: ReferencesType[] = [
   {
@@ -26,14 +28,74 @@ const ReferencesData: ReferencesType[] = [
     id: 4,
     path: "ref-4.png"
   }
-]
+];
 
 export default function Services() {
+
+  React.useEffect(() => {
+    gsap.fromTo(".home__title",
+      {
+        x: -20,
+        opacity: 0
+      },
+      {
+        delay: 0.8,
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-1",
+      {
+        x: 500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-1",
+          start: "top center",
+          end: "bottom bottom",
+          markers: true,
+          scrub: true,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-2",
+      {
+        x: -500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-2",
+          start: 'center bottom',
+          end: "center top",
+          scrub: true,
+          markers: true,
+          pinSpacing: false,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+  }, []);
+  
   return (
     <>
       <Header name={"Services"} path={"services"} />
 
-      <section className='page__container'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='home__page__content'>
@@ -167,7 +229,7 @@ export default function Services() {
         </div>
       </section>
 
-      <section className='page__container'>
+      <section className='page__container' id='section-2'>
         <div className='page__row'>
           <div className='page__gap'>
 
@@ -212,7 +274,7 @@ export default function Services() {
         </div>
       </section>
 
-      <section className='page__container'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='home__page__content'>

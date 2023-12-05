@@ -1,3 +1,4 @@
+import React from 'react';
 import { IconBrandInstagram, IconBrandTwitterFilled, IconCookie, IconLeaf, IconMessage, IconQuote, IconThumbUp } from '@tabler/icons-react'
 import { IconBellRinging2, IconPill } from '@tabler/icons-react'
 import Header from 'components/Header'
@@ -7,6 +8,7 @@ import "swiper/css";
 import { Autoplay, Navigation } from 'swiper/modules';
 import { IconBrandFacebookFilled } from '@tabler/icons-react';
 import Button from 'components/Button';
+import gsap, { Power2 } from 'gsap';
 
 interface CommuniticatonType {
   id: number,
@@ -137,11 +139,71 @@ const ExpertSkillsData: ExpertSkillsType[] = [
 export default function About() {
 
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    gsap.fromTo(".home__title",
+      {
+        x: -20,
+        opacity: 0
+      },
+      {
+        delay: 0.8,
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-1",
+      {
+        x: 500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-1",
+          start: "top center",
+          end: "bottom bottom",
+          markers: true,
+          scrub: true,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-2",
+      {
+        x: -500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-2",
+          start: 'center bottom',
+          end: "center top",
+          scrub: true,
+          markers: true,
+          pinSpacing: false,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+  }, []);
+
   return (
     <>
       <Header name={"ABOUT US"} path={"about"} />
 
-      <section className='page__container'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='home__page__content'>
@@ -196,7 +258,9 @@ export default function About() {
                   <p>Vivamus lectus metus, efficitur pulvinar sollicit magna.</p>
                 </div>
               </div>
-              <Button className={""} name={"Contact Us"} onClick={() => navigate("/contact")} />
+              <div className='button'>
+                <Button className={""} name={"Contact Us"} onClick={() => navigate("/contact")} />
+              </div>
             </div>
           </div>
         </div>
@@ -234,7 +298,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className='page__container'>
+      <section className='page__container' id='section-2'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='home__page__content'>
@@ -279,7 +343,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className='page__container'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='home__page__content'>

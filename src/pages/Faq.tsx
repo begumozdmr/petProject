@@ -2,6 +2,7 @@ import { IconArrowBadgeDown, IconArrowBadgeRight } from '@tabler/icons-react';
 import Header from 'components/Header';
 import Questions from 'components/Questions';
 import React from 'react';
+import gsap, { Power2 } from 'gsap';
 
 interface AchievementsType {
   id: number,
@@ -92,11 +93,70 @@ export default function Faq() {
     setIndexQuestionBox2(id === indexQuestionBox2 ? 0 : id);
   };
 
+  React.useEffect(() => {
+    gsap.fromTo(".home__title",
+      {
+        x: -20,
+        opacity: 0
+      },
+      {
+        delay: 0.8,
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-1",
+      {
+        x: 500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-1",
+          start: "top center",
+          end: "bottom bottom",
+          markers: true,
+          scrub: true,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-2",
+      {
+        x: -500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-2",
+          start: 'center bottom',
+          end: "center top",
+          scrub: true,
+          markers: true,
+          pinSpacing: false,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+  }, []);
+
   return (
     <>
       <Header name={"FAQ"} path={"faq"} />
 
-      <section className='page__container'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='home__page__content'>
@@ -154,7 +214,7 @@ export default function Faq() {
         </div>
       </section>
 
-      <section className='home__header__container home__header__container--faq__container'>
+      <section className='home__header__container home__header__container--faq__container' id='section-2'>
         <div className='grid__2'>
           <div className='home__page__content'>
             <h1 className='faq__title'>Our Achievements</h1>
@@ -176,7 +236,10 @@ export default function Faq() {
         </div>
       </section>
 
-      <Questions name={"Have More Questions ?"} />
+      <div id='section-1'>
+        <Questions name={"Have More Questions ?"} />
+      </div>
+
     </>
   )
 }

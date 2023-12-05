@@ -1,13 +1,87 @@
 import Header from 'components/Header'
 import Questions from 'components/Questions'
-import React from 'react'
+import React from 'react';
+import gsap, { Power2 } from 'gsap';
 
 export default function Contact() {
+
+  React.useEffect(() => {
+    gsap.fromTo(".home__title",
+      {
+        x: -20,
+        opacity: 0
+      },
+      {
+        delay: 0.8,
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo(".button",
+      {
+        y: 80,
+        opacity: 0
+      },
+      {
+        delay: 1.6,
+        y: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-1",
+      {
+        x: 500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-1",
+          start: "top center",
+          end: "bottom bottom",
+          markers: true,
+          scrub: true,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+    gsap.fromTo("#section-2",
+      {
+        x: -500,
+        opacity: 0
+      },
+      {
+        duration: 2,
+        scrollTrigger: {
+          trigger: "#section-2",
+          start: 'center bottom',
+          end: "center top",
+          scrub: true,
+          markers: true,
+          pinSpacing: false,
+          toggleActions: "play none none none",
+        },
+        x: 0,
+        opacity: 1,
+        ease: Power2.easeInOut
+      }
+    )
+
+  }, []);
+
   return (
     <>
       <Header name={"CONTACT"} path={"contact"} />
 
-      <section className='page__container'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
             <div className='grid__3'>
@@ -57,7 +131,9 @@ export default function Contact() {
         </div>
       </section>
 
-      <Questions name={"Get Closer Now"}/>
+      <div id='section-2'>
+        <Questions name={"Get Closer Now"} />
+      </div>
 
       <section>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.215111659807!2d32.744804962667956!3d39.869419245516056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347acc4350fa9%3A0x22720cefb175c933!2sBilkent%20CYBERPARK!5e0!3m2!1str!2str!4v1701518752709!5m2!1str!2str" width="99.5%" height="300" loading="lazy"></iframe>
