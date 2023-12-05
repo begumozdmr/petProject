@@ -3,6 +3,8 @@ import Header from 'components/Header';
 import Questions from 'components/Questions';
 import React from 'react';
 import gsap, { Power2 } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 interface AchievementsType {
   id: number,
@@ -96,7 +98,7 @@ export default function Faq() {
   React.useEffect(() => {
     gsap.fromTo(".home__title",
       {
-        x: -20,
+        x: -10,
         opacity: 0
       },
       {
@@ -109,42 +111,17 @@ export default function Faq() {
 
     gsap.fromTo("#section-1",
       {
-        x: 500,
+        y: 500,
         opacity: 0
       },
       {
         duration: 2,
         scrollTrigger: {
-          trigger: "#section-1",
-          start: "top center",
-          end: "bottom bottom",
-          markers: true,
-          scrub: true,
+          trigger: document.querySelector("body"),
+          start: "top",
           toggleActions: "play none none none",
         },
-        x: 0,
-        opacity: 1,
-        ease: Power2.easeInOut
-      }
-    )
-
-    gsap.fromTo("#section-2",
-      {
-        x: -500,
-        opacity: 0
-      },
-      {
-        duration: 2,
-        scrollTrigger: {
-          trigger: "#section-2",
-          start: 'center bottom',
-          end: "center top",
-          scrub: true,
-          markers: true,
-          pinSpacing: false,
-          toggleActions: "play none none none",
-        },
-        x: 0,
+        y: 0,
         opacity: 1,
         ease: Power2.easeInOut
       }
@@ -214,7 +191,7 @@ export default function Faq() {
         </div>
       </section>
 
-      <section className='home__header__container home__header__container--faq__container' id='section-2'>
+      <section className='home__header__container home__header__container--faq__container' id='section-1'>
         <div className='grid__2'>
           <div className='home__page__content'>
             <h1 className='faq__title'>Our Achievements</h1>
@@ -239,7 +216,6 @@ export default function Faq() {
       <div id='section-1'>
         <Questions name={"Have More Questions ?"} />
       </div>
-
     </>
   )
 }

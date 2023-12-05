@@ -2,6 +2,8 @@ import Header from 'components/Header'
 import Questions from 'components/Questions'
 import React from 'react';
 import gsap, { Power2 } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
 
@@ -19,57 +21,19 @@ export default function Contact() {
       }
     )
 
-    gsap.fromTo(".button",
-      {
-        y: 80,
-        opacity: 0
-      },
-      {
-        delay: 1.6,
-        y: 0,
-        opacity: 1,
-        ease: Power2.easeInOut
-      }
-    )
-
     gsap.fromTo("#section-1",
       {
-        x: 500,
+        y: 500,
         opacity: 0
       },
       {
         duration: 2,
         scrollTrigger: {
-          trigger: "#section-1",
-          start: "top center",
-          end: "bottom bottom",
-          markers: true,
-          scrub: true,
+          trigger: document.querySelector("body"),
+          start: "top",
           toggleActions: "play none none none",
         },
-        x: 0,
-        opacity: 1,
-        ease: Power2.easeInOut
-      }
-    )
-
-    gsap.fromTo("#section-2",
-      {
-        x: -500,
-        opacity: 0
-      },
-      {
-        duration: 2,
-        scrollTrigger: {
-          trigger: "#section-2",
-          start: 'center bottom',
-          end: "center top",
-          scrub: true,
-          markers: true,
-          pinSpacing: false,
-          toggleActions: "play none none none",
-        },
-        x: 0,
+        y: 0,
         opacity: 1,
         ease: Power2.easeInOut
       }
@@ -131,7 +95,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <div id='section-2'>
+      <div id='section-1'>
         <Questions name={"Get Closer Now"} />
       </div>
 

@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Navigation } from 'swiper/modules';
 import gsap, { Power2 } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 interface ReferencesType {
   id: number,
@@ -48,42 +50,17 @@ export default function Services() {
 
     gsap.fromTo("#section-1",
       {
-        x: 500,
+        y: 500,
         opacity: 0
       },
       {
         duration: 2,
         scrollTrigger: {
-          trigger: "#section-1",
-          start: "top center",
-          end: "bottom bottom",
-          markers: true,
-          scrub: true,
+          trigger: document.querySelector("body"),
+          start: "top",
           toggleActions: "play none none none",
-        },
-        x: 0,
-        opacity: 1,
-        ease: Power2.easeInOut
-      }
-    )
-
-    gsap.fromTo("#section-2",
-      {
-        x: -500,
-        opacity: 0
       },
-      {
-        duration: 2,
-        scrollTrigger: {
-          trigger: "#section-2",
-          start: 'center bottom',
-          end: "center top",
-          scrub: true,
-          markers: true,
-          pinSpacing: false,
-          toggleActions: "play none none none",
-        },
-        x: 0,
+        y: 0,
         opacity: 1,
         ease: Power2.easeInOut
       }
@@ -229,7 +206,7 @@ export default function Services() {
         </div>
       </section>
 
-      <section className='page__container' id='section-2'>
+      <section className='page__container' id='section-1'>
         <div className='page__row'>
           <div className='page__gap'>
 
