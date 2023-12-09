@@ -16,6 +16,7 @@ When the file is downloaded to your computer, open your file from visual studio 
 #### `Step 4:` 
 Write the following code instead of powershell in visual studio code application.
 
+    npm i
     npm run start
 
 ## IMPORTANT ! <br>
